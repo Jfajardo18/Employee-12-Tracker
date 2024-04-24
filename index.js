@@ -42,10 +42,10 @@ const run = async () => {
             case 'Delete Employee':
             case 'Delete Department':
             case 'Delete Role':
-                const item = action.split(' ')[1].toLowerCase();
+                const itemType = action.split(' ')[1].toLowerCase();
                 const { itemId } = await prompts.deleteItemPrompt(itemType);
-                await db['delete${itemType.charAt(0).toUpperCase() + itemType.slice(1)}'](itemId);
-                console.log('${itemType} deleted!');
+                await db[`delete${itemType.charAt(0).toUpperCase() + itemType.slice(1)}`](itemId);
+                console.log(`${itemType} deleted!`);
                 break;
             case 'Exit':
                 process.exit();
